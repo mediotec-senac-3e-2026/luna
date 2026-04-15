@@ -1,36 +1,41 @@
-import {userEffect, useState} from "react";
-import MapView from "../components/mapview";
-import AlertCard from "../components/alertcard";
+import { useEffect, useState } from "react";
+import MapView from "../components/MapView";
+import AlertCard from "../components/AlertCard";
+import { generateAlert } from "../services/fakeAlerts";
 
-function Dashboard() {
+export default function Dashboard() {
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const newAlert = {
-        lat: -8.05 + Math.random() * 0.02,
-        lng: -34.9 + Math.random() * 0.02,
-        message: "Emergência acionada",
-        time: new Date().toLocaleTimeString(),
-      };
-
+      const newAlert = generateAlert();
       setAlerts((prev) => [newAlert, ...prev]);
-    }, 5000);
+    }, 5000); // novo alerta a cada 5s
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div>
-      <MapView alerts={alerts} />
+    <div style={{ display: "flex", height: "100%" }}>
+      
+      {/* Sidebar */}
+      <div style={{
+        width: "300px",
+        background: "#1a0000",
+        padding: "10px",
+        overflowY: "auto"
+      }}>
+        <h2 style={{ color: "white" }}>🚨 Alertas</h2>
 
-      <div className="alerts-container">
-        {alerts.map((alert, index) => (
-          <AlertCard key={index} alert={alert} />
+        {alerts.map(alert => (
+          <AlertCard key={alert.id} alert={alert} />
         ))}
+      </div>
+
+      {/* Mapa */}
+      <div style={{ flex: 1 }}>
+        <MapView alerts={alerts} />
       </div>
     </div>
   );
 }
-
-export default Dashboard;
