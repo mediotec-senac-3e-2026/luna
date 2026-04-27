@@ -1,7 +1,10 @@
-import Dashboard from "./pages/Dashboard";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  return <Dashboard />;
+  return (
+   <p>oiii</p>
+  );
 }
 
 export default App;

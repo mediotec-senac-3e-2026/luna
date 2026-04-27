@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<div class="fab" onclick="saidaRapida()">SAIR</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+
+<script>
+// MAPA PRECISA SER INICIALIZADO AQUI
+var map = L.map('map').setView([-8.05,-34.9], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+// pontos clicáveis
+L.marker([-8.05,-34.9]).addTo(map).bindPopup("Espaço Seguro");
+L.marker([-8.06,-34.91]).addTo(map).bindPopup("Clínica Parceira");
+</script>
+
+</body>
+</html>
