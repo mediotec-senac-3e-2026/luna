@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diário</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h2>Diário de Sintomas</h2>
+</header>
+
+<main class="container">
+
+<table class="table">
+<tr><th>Sintoma</th><th>Ação</th></tr>
+
+<tr>
+  <td>Cólica leve</td>
+  <td onclick="registrar('leve')">✔️</td>
+</tr>
+
+<tr>
+  <td>Cólica forte</td>
+  <td onclick="emergencia()">⚠️</td>
+</tr>
+
+<tr>
+  <td>Enxaqueca</td>
+  <td onclick="registrar('enxaqueca')">✔️</td>
+</tr>
+
+</table>
+
+<div id="msg" class="msg"></div>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
