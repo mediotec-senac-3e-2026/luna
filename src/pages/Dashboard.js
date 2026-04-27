@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import MapView from "../components/MapView";
-import AlertCard from "../components/AlertCard";
-import { generateAlert } from "../services/fakeAlerts";
+import MapView from '../components/MapView.js';
+import AlertCard from "../components/AlertCard.js";
+import { generateAlert } from "../services/fakeAlerts.js";
 
 export default function Dashboard() {
   const [alerts, setAlerts] = useState([]);
